@@ -1,10 +1,10 @@
-# Best Cars Dealership Management System
+# fullstack_developer_capstone
 
 This project is a high-performance car dealership management web application designed for the "Best Cars" dealership. It handles dealer inventory, customer reviews with sentiment analysis, and user authentication.
 
 ## Project Details
-- **Repository Name**: Best-Cars-Capstone
-- **Project Name**: Best Cars Dealership Management System
+- **Repository Name**: xrwwm-fullstack_developer_capstone
+- **Project Name**: fullstack_developer_capstone
 - **Developer**: Harshita Raotole
 - **Tech Stack**: React, Node.js, Express, MongoDB (Atlas), Docker, Kubernetes, CI/CD with GitHub Actions.
 
