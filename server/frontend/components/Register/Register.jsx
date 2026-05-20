@@ -14,10 +14,40 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log("Registering user:", formData);
-    // Add logic to call backend API
+    
+    const register_url = window.location.origin + "/djangoapp/register";
+    
+    try {
+      const res = await fetch(register_url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "userName": formData.username,
+          "password": formData.password,
+          "firstName": formData.firstName,
+          "lastName": formData.lastName,
+          "email": formData.email
+        }),
+      });
+      
+      const json = await res.json();
+      if (json.status) {
+        sessionStorage.setItem('username', json.userName);
+        window.location.href = window.location.origin;
+      } else if (json.error === "Already Registered") {
+        alert("The user with same username is already registered");
+        window.location.href = window.location.origin;
+      } else {
+        alert(json.error || "Registration failed");
+      }
+    } catch (error) {
+      console.error("Error registering user:", error);
+      alert("Registration failed. Please try again later.");
+    }
   };
 
   return (
